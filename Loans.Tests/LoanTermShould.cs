@@ -1,5 +1,6 @@
 ﻿using Loans.Domain.Applications;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace Loans.Tests
 {
@@ -55,6 +56,33 @@ namespace Loans.Tests
             // Assert
 
             Assert.That(a, Is.Not.EqualTo(b));
+        }
+        [Test]
+        public void ReferenceEqualityExample()
+        {
+            var a = new LoanTerm(1);
+            var b = a;
+
+            Assert.That(a, Is.SameAs(b));
+
+            var x = new List<string> { "a", "b" };
+            var y = x;
+
+            Assert.That(x, Is.SameAs(y));
+        }
+        [Test]
+        public void ReferenceNotEqualityExample()
+        {
+            var a = new LoanTerm(1);
+            var b = new LoanTerm(1);
+
+            Assert.That(a, Is.Not.SameAs(b));
+
+            var x = new List<string> { "a", "b" };
+            var y = new List<string> { "a", "b" };
+
+            Assert.That(x, Is.Not.SameAs(y));
+
         }
     }
 }
