@@ -30,5 +30,31 @@ namespace Loans.Tests
             // Assert 
             Assert.That(years, Is.EqualTo(1));
         }
+        [Test]
+        public void RespectValueEquality()
+        {
+            // Arrange
+            var a = new LoanTerm(1);
+            var b = new LoanTerm(1);
+
+            // Act
+
+            // Assert
+
+            Assert.That(a, Is.EqualTo(b));
+        }
+        [Test]
+        public void RespectValueInequality()
+        {
+            // Arrange
+            var a = new LoanTerm(1);
+            var b = new LoanTerm(2);
+
+            // Act
+
+            // Assert
+
+            Assert.That(a, Is.Not.EqualTo(b));
+        }
     }
 }
