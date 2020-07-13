@@ -1,5 +1,6 @@
 ﻿using Loans.Domain.Applications;
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 
 namespace Loans.Tests
@@ -90,6 +91,12 @@ namespace Loans.Tests
             double a = 1.0 / 3.0;
             Assert.That(a, Is.EqualTo(0.33).Within(0.004));
             Assert.That(a, Is.EqualTo(0.33).Within(10).Percent);
+        }
+
+        [Test]
+        public void NotAllowZeroYears()
+        {
+            Assert.That(() => new LoanTerm(0), Throws.TypeOf<ArgumentOutOfRangeException>());
         }
     }
 }
